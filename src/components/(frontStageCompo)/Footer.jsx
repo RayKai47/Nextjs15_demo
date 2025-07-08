@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     // For light mode
     // bg-linear-to-br from-orange-300 from-10% via-orange-500 via-40% to-amber-600 to-90%
-    <footer className="mt-30 pt-8 pb-10
+    <footer className="mt-12.5 pt-8 pb-10
       min-h-[200px] text-stone-300
       bg-linear-to-br from-stone-300/55 from-5% via-stone-700 via-30% to-stone-600/30 to-90%
     ">

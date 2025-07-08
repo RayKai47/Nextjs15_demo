@@ -24,7 +24,7 @@ const MealsLayout = ({ children }) => {
       <div className="h-[400px] relative">
         <Image className="brightness-30" src="/meals/meals_banner.jpg" alt="Meal" fill />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-          <h1 className="text-4xl font-bold italic">
+          <h1 className="text-4xl font-bold italic text-stone-300">
             {isMealsDetail
               ? (currentFood?.title || "Meal Is Not Found")
               : "Meals"}

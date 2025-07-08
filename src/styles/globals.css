@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -12,12 +14,30 @@
   --font-mono: var(--font-noto-sans-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+.light{
+  --background: #eee;
+  --foreground: #171717;
+}
+
+.dark{
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* 系統偏好設定作為後備 */
+/* @media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
+
+/* @media (prefers-color-scheme: light) {
+  :root:not(.light):not(.dark) {
+    --background: #ffffff;
+    --foreground: #000000;
+  }
+} */
 
 * {
   box-sizing: border-box;
@@ -26,7 +46,6 @@
 img{
   @apply 
     object-cover
-    /* object-center; */
 }
 
 body {
@@ -73,16 +92,18 @@ body {
     px-4
     w-full
     bg-stone-700
+    dark:bg-stone-800
     flex
     justify-between
     items-center
     sticky
     top-0
-    z-50;
+    z-1000;
 
   &_logo {
     @apply
-      invert-100;
+      invert-100
+      dark:invert-0;
   }
 
   .nav {
@@ -101,22 +122,25 @@ body {
         @apply
          /* text-stone-700  */
          text-stone-400
+         dark:text-stone-300
           relative
           transition-all
           duration-300
           ease-in-out;
         &:after{
-          content: '';
-          background-color: var(--foreground);
           @apply
+            content-['']
             w-0 h-0.5 
+            bg-white
+            dark:bg-stone-700
             /* bg-stone-400 */
             absolute left-0 bottom-0
             transition-all duration-300 ease-in-out;
         }
         &:hover, &.active{
           @apply 
-          text-stone-100;
+          text-stone-100
+          dark:text-stone-50;
           &:after{
             @apply
               w-full;
@@ -135,7 +159,8 @@ body {
   }
   .md\:nav_menu {
     @apply 
-      text-stone-700
+      text-stone-200
+      dark:text-stone-300
       block
       md:hidden
       cursor-pointer;
@@ -145,8 +170,10 @@ body {
     @apply 
       p-0.5
       bg-slate-700
+      dark:bg-slate-600
       border
       border-slate-700
+      dark:border-slate-600
       rounded-full 
       hidden
       md:flex
@@ -202,7 +229,8 @@ body {
       &_title {
         @apply
           text-3xl
-          text-stone-300
+          text-stone-700
+          dark:text-stone-200
           italic
           font-semibold
           text-center;
@@ -222,6 +250,7 @@ body {
           px-4
           min-h-80
           bg-stone-600
+          dark:bg-stone-700
           rounded-lg
           shadow-none
           /* [box-shadow:8px_8px_0_0_var(--color-stone-400)] */
@@ -232,34 +261,133 @@ body {
           duration-300
           ease-in-out
           hover:scale-105
-          hover:[box-shadow:4px_4px_0_0_var(--color-stone-400)];
+          hover:[box-shadow:4px_4px_0_0_var(--color-stone-400)]
+          dark:hover:[box-shadow:4px_4px_0_0_var(--color-stone-300)];
           /* hover:[box-shadow:0_0_0_stone-100]; */
           &_title {
             @apply
+              text-stone-100
               flex
               flex-col
               justify-between
               items-start;
-            h2{
+            h3{
               @apply
                 text-2xl
-                font-bold;
+                font-semibold
+                text-stone-100
+                dark:text-stone-50;
             }
             p{
               @apply
                 text-sm
-                text-stone-300;
+                text-stone-300
+                dark:text-stone-200;
             }
           }
           &_content {
             @apply
               text-sm
               text-stone-300
+              dark:text-stone-200
               flex
               flex-col
               gap-2;
           }
       }
+  }
+  &_community {
+    &_title {
+      @apply
+        text-3xl
+        font-semibold
+        text-stone-700
+        dark:text-stone-200
+        italic;
+        span {
+          @apply
+            ml-2
+            text-xl
+            text-stone-400
+            dark:text-stone-500
+            italic;
+        }
+    }
+    &_parallax1 {
+      @apply
+        bg-[url('/chatting.jpg')]
+    }
+    &_parallax2 {
+      @apply
+        bg-[url('/parallex2.jpg')];
+    }
+    &_parallax3 {
+      @apply
+        bg-[url('/parallex3.jpg')];
+    }
+  }
+}
+
+.parallax{
+  &_position{
+    @apply
+      w-full
+      bg-cover
+      bg-center
+      bg-fixed
+      bg-no-repeat;
+  }
+  &_container{
+    @apply
+      h-screen
+      relative;
+  }
+  &_title{
+    @apply
+      /* mt-10 */
+      py-2
+      px-4
+      text-2xl
+      text-center
+      font-semibold
+      text-stone-100
+      dark:text-stone-200
+      bg-gray-700/65
+      backdrop-blur-sm
+      inline-block
+      sticky
+      left-[50%]
+      top-[45%]
+      -translate-x-1/2
+      z-10
+      italic;
+    span {
+      @apply
+        mt-1
+        text-lg
+        text-stone-300/90
+        dark:text-stone-500
+        block
+        italic;
+    }
+  }
+}
+
+.meal_content{
+  @apply
+    p-4
+    h-full
+    bg-stone-600
+    rounded-lg
+    flex
+    flex-col
+    justify-between;
+  &_block {
+    @apply
+      mb-5
+      grid
+      grid-cols-1
+      gap-2;
   }
 }
 
@@ -271,5 +399,7 @@ body {
     w-full
     min-h-100
     bg-stone-700
-    text-stone-300;
+    dark:bg-stone-800
+    text-stone-300
+    dark:text-stone-200;
 }

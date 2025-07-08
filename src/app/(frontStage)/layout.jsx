@@ -1,8 +1,9 @@
 import { Noto_Sans_TC, Noto_Sans_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "#/components/header";
-import Footer from "#/components/footer";
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider } from "next-themes";
+import "#/styles/globals.css";
+// import Providers from "#/components/Providers";
+import Header from "#/components/(frontStageCompo)/Header";
+import Footer from "#/components/(frontStageCompo)/Footer";
 
 const notoSansTC = Noto_Sans_TC({
   variable: "--font-noto-sans-tc",
@@ -21,18 +22,20 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="zh-TW" suppressHydrationWarning>
+    <html lang="zh-TW" suppressHydrationWarning >
       <body
         className={`${notoSansTC.variable} ${notoSansMono.variable} antialiased`}
       >
-        <ThemeProvider 
-          attribute="class" 
-          defaultTheme="light" 
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
           enableSystem={true}
           disableTransitionOnChange
         >
-          <Header />
-          {children}
+          <Header/>
+          <div className="min-h-[calc(100vh-300px)]">
+            {children}
+          </div>
           <Footer />
         </ThemeProvider>
       </body>

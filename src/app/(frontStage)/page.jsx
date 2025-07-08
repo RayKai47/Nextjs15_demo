@@ -1,5 +1,7 @@
 import Image from "next/image";
 // import swiper1 from "swiper1.jpg";
+import HomeCategory from "#/components/(frontStageCompo)/home/HomeCategory";
+import HomeCommunity from "#/components/(frontStageCompo)/home/HomeCommunity";
 
 const Home = () => {
   return (
@@ -8,60 +10,11 @@ const Home = () => {
         <Image src="/swiper1.jpg" alt="Brand Logo" fill />
       </div>
 
-      <div className="rwd_container home_container">
-        <div className="home_category">
-          <h2 className="home_category_title">Category</h2>
+      <HomeCategory />
+      <HomeCommunity />
 
-          <div className="home_category_list">
-            <div className="home_category_item">
-              <div className="home_category_item_title">
-                <h3>Home</h3>
-                <p>Subtitle</p>
-              </div>
-              <div className="home_category_item_content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-              </div>
-            </div>
-            <div className="home_category_item">
-              <div className="home_category_item_title">
-                <h3>Home</h3>
-                <p>Subtitle</p>
-              </div>
-              <div className="home_category_item_content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-              </div>
-            </div>
-            <div className="home_category_item">
-              <div className="home_category_item_title">
-                <h3>Home</h3>
-                <p>Subtitle</p>
-              </div>
-              <div className="home_category_item_content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-              </div>
-            </div>
-            <div className="home_category_item">
-              <div className="home_category_item_title">
-                <h3>Home</h3>
-                <p>Subtitle</p>
-              </div>
-              <div className="home_category_item_content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="banner">
-        <Image src="/chatting.jpg" alt="People Chatting" fill />
-      </div>
-
-      <div className="rwd_container">
-        <div className="home_community">
-          <h2 className="home_community_title">Community</h2>
-        </div>
-      </div>
+      
     </>
 
     // 原生參考格式

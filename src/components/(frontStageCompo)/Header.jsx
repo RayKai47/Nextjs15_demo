@@ -3,17 +3,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { MdMenu, MdDarkMode, MdLightMode } from "react-icons/md";
+import { MdMenu } from "react-icons/md";
+import ThemesSwitch from "#/components/(frontStageCompo)/ThemesSwitch";
 
 import routes from '#/infra/routes/routes'
 
 const Header = () => {  
 
   const path = usePathname();
-  // const isActive = (path) => path === path;
 
   return (
-    <header className="header bg-linear-to-br from-stone-500 to-stone-600/30 to-90%">
+    <header className="
+      bg-linear-to-br from-stone-500 to-stone-600/30 to-90%
+      dark:bg-linear-to-br dark:from-stone-900 dark:to-stone-700/10 dark:to-90%
+      header
+    ">
       <Link href="/">
         <Image
           className="header_logo drop-shadow-xl/35"
@@ -33,9 +37,15 @@ const Header = () => {
         ))}
         </ul>
       </nav>
-      <div className="dark_mode hidden md:block">
-        <MdDarkMode className="dark_icon" size={24} />
-        <MdLightMode className="light_icon" size={24} />
+      <div className="w-25 flex justify-end">
+        <div className="
+          w-8 h-8
+          relative
+          hidden md:block
+          transition-all duration-300
+        ">
+          <ThemesSwitch />
+        </div>
       </div>
       <div className="md:nav_menu">
         <MdMenu size={24} />
