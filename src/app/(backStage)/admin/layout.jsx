@@ -1,5 +1,5 @@
 import { Noto_Sans_TC, Noto_Sans_Mono } from "next/font/google";
-import "#/styles/(backStageStyles)/admin.css";
+import "#/styles/admin/admin.css";
 
 const notoSansTC = Noto_Sans_TC({
   variable: "--font-noto-sans-tc",
@@ -23,6 +23,7 @@ const AdminLayout = ({ children }) => {
         className={`${notoSansTC.variable} ${notoSansMono.variable} antialiased`}
       >
         <div className="min-h-[calc(100vh-300px)]">
+          <p>type</p>
           {children}
         </div>
       </body>

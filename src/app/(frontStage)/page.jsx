@@ -4,6 +4,9 @@ import HomeCategory from "#/components/(frontStageCompo)/home/HomeCategory";
 import HomeCommunity from "#/components/(frontStageCompo)/home/HomeCommunity";
 
 const Home = () => {
+
+
+  
   return (
     <>
       <div className="swiper_container">
@@ -12,6 +15,29 @@ const Home = () => {
 
       <HomeCategory />
       <HomeCommunity />
+
+      <div className="rwd_container mt-5 flex flex-col gap-4"> 
+        <h2 className="text-2xl font-bold italic text-stone-700 dark:text-stone-300">從這裡分享</h2>
+        <p className="text-stone-500 dark:text-stone-400">分享你的美食，讓更多人看到</p>
+        <div>
+          <a
+            className="
+              px-4 py-2
+              text-stone-300
+              dark:text-stone-700
+              bg-stone-700
+              dark:bg-stone-300
+              inline-block
+              rounded-md
+              transition-all duration-300 ease-in-out
+              hover:bg-stone-500
+              dark:hover:bg-stone-400"
+            href="/community"
+          >
+            分享
+          </a>
+        </div>
+      </div>
 
 
       

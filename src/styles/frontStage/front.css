@@ -1,0 +1,349 @@
+@import "../globals.css";
+
+@keyframes flashing {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading_flashing{
+  animation-name: flashing;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+.rwd_container{
+  @apply
+    container
+    mx-auto
+    px-4
+    md:px-6
+    lg:px-8;
+}
+
+.header {
+  /* background-color: var(--background); */
+  @apply
+    py-3
+    px-4
+    w-full
+    bg-stone-700
+    dark:bg-stone-800
+    flex
+    justify-between
+    items-center
+    sticky
+    top-0
+    z-1000;
+
+  &_logo {
+    @apply
+      invert-100
+      dark:invert-0;
+  }
+
+  .nav {
+    @apply
+      flex gap-4;
+    ul {
+      @apply
+        /* mx-auto px-10 */
+        flex
+        justify-end
+        items-center
+        flex-wrap
+        gap-4;
+      li{
+        /* color: var(--foreground); */ 
+        @apply
+         /* text-stone-700  */
+         text-stone-400
+         dark:text-stone-300
+          relative
+          transition-all
+          duration-300
+          ease-in-out;
+        &:after{
+          @apply
+            content-['']
+            w-0 h-0.5 
+            bg-white
+            dark:bg-stone-700
+            /* bg-stone-400 */
+            absolute left-0 bottom-0
+            transition-all duration-300 ease-in-out;
+        }
+        &:hover, &.active{
+          @apply 
+          text-stone-100
+          dark:text-stone-50;
+          &:after{
+            @apply
+              w-full;
+             /* bg-stone-700; */
+          }
+        }
+      }
+    }
+  
+    .md\:nav_list {
+      @apply
+      hidden
+      md:flex;
+    }
+  
+  }
+  .md\:nav_menu {
+    @apply 
+      text-stone-200
+      dark:text-stone-300
+      block
+      md:hidden
+      cursor-pointer;
+  }
+
+  .dark_mode {
+    @apply 
+      p-0.5
+      bg-slate-700
+      dark:bg-slate-600
+      border
+      border-slate-700
+      dark:border-slate-600
+      rounded-full 
+      hidden
+      md:flex
+      justify-center
+      items-center gap-1
+      cursor-pointer
+      transition-all
+      duration-300 ease-in-out
+      hover:text-slate-700
+      hover:bg-white
+      hover:scale-105;
+    .dark_icon {
+      /* @apply hidden dark:block text-white; */
+    }
+    .light_icon {
+      @apply
+      block
+      dark:hidden
+      text-black;
+    }
+  } 
+}
+
+.swiper_container {
+  @apply
+  w-full
+  h-100
+  relative;
+}
+
+.banner {
+  @apply
+    w-full
+    h-100 
+
+    relative;
+}
+
+.home{
+  &_container {
+    @apply    
+      my-10
+      flex
+      flex-col
+      gap-10;
+  }
+  &_category {
+    @apply
+      pb-10
+      flex
+      flex-col
+      gap-10;
+      &_title {
+        @apply
+          text-3xl
+          text-stone-700
+          dark:text-stone-200
+          italic
+          font-semibold
+          text-center;
+      }
+      &_list{
+        @apply
+          grid
+          grid-cols-2
+          lg:grid-cols-4
+          justify-center
+          items-center
+          gap-4;
+      }
+      &_item {
+        @apply
+          py-6
+          px-4
+          min-h-80
+          bg-stone-600
+          dark:bg-stone-700
+          rounded-lg
+          shadow-none
+          /* [box-shadow:8px_8px_0_0_var(--color-stone-400)] */
+          flex
+          flex-col
+          gap-2
+          transition-all
+          duration-300
+          ease-in-out
+          hover:scale-105
+          hover:[box-shadow:4px_4px_0_0_var(--color-stone-400)]
+          dark:hover:[box-shadow:4px_4px_0_0_var(--color-stone-300)];
+          /* hover:[box-shadow:0_0_0_stone-100]; */
+          &_title {
+            @apply
+              text-stone-100
+              flex
+              flex-col
+              justify-between
+              items-start;
+            h3{
+              @apply
+                text-2xl
+                font-semibold
+                text-stone-100
+                dark:text-stone-50;
+            }
+            p{
+              @apply
+                text-sm
+                text-stone-300
+                dark:text-stone-200;
+            }
+          }
+          &_content {
+            @apply
+              text-sm
+              text-stone-300
+              dark:text-stone-200
+              flex
+              flex-col
+              gap-2;
+          }
+      }
+  }
+  &_community {
+    &_title {
+      @apply
+        text-3xl
+        font-semibold
+        text-stone-700
+        dark:text-stone-200
+        italic;
+        span {
+          @apply
+            ml-2
+            text-xl
+            text-stone-400
+            dark:text-stone-500
+            italic;
+        }
+    }
+    &_parallax1 {
+      @apply
+        bg-[url('/chatting.jpg')]
+    }
+    &_parallax2 {
+      @apply
+        bg-[url('/parallex2.jpg')];
+    }
+    &_parallax3 {
+      @apply
+        bg-[url('/parallex3.jpg')];
+    }
+  }
+}
+
+.parallax{
+  &_position{
+    @apply
+      w-full
+      bg-cover
+      bg-center
+      bg-fixed
+      bg-no-repeat;
+  }
+  &_container{
+    @apply
+      h-screen
+      relative;
+  }
+  &_title{
+    @apply
+      /* mt-10 */
+      py-2
+      px-4
+      text-2xl
+      text-center
+      font-semibold
+      text-stone-100
+      dark:text-stone-200
+      bg-gray-700/65
+      backdrop-blur-sm
+      inline-block
+      sticky
+      left-[50%]
+      top-[45%]
+      -translate-x-1/2
+      z-10
+      italic;
+    span {
+      @apply
+        mt-1
+        text-lg
+        text-stone-300/90
+        dark:text-stone-500
+        block
+        italic;
+    }
+  }
+}
+
+.meal_content{
+  @apply
+    p-4
+    h-full
+    bg-stone-600
+    rounded-lg
+    flex
+    flex-col
+    justify-between;
+  &_block {
+    @apply
+      mb-5
+      grid
+      grid-cols-1
+      gap-2;
+  }
+}
+
+.footer {
+  @apply
+    mt-30
+    py-10
+    px-4
+    w-full
+    min-h-100
+    bg-stone-700
+    dark:bg-stone-800
+    text-stone-300
+    dark:text-stone-200;
+}

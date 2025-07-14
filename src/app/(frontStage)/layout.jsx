@@ -1,6 +1,6 @@
 import { Noto_Sans_TC, Noto_Sans_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import "#/styles/globals.css";
+import "#/styles/frontStage/front.css";
 // import Providers from "#/components/Providers";
 import Header from "#/components/(frontStageCompo)/Header";
 import Footer from "#/components/(frontStageCompo)/Footer";
